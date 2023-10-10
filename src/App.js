@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Login from "../src/components/Login";
+import { useState } from "react";
+import Logout from "./components/Logout";
+import { googleLogout } from "@react-oauth/google";
 
 function App() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const adminHandler = () => {
+    setIsAdmin(true);
+  }
+  const loginHandler = () => {
+    setLoggedIn(true);
+  };
+  const logoutHandler = () => {
+    googleLogout();
+    setLoggedIn(false);
+    setIsAdmin(false);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {!isLoggedIn && <Login setAdmin={adminHandler} onLoggedIn={loginHandler}></Login>}
+      {isLoggedIn && isAdmin && <Logout onLoggedOut={logoutHandler}></Logout>}
+      {isLoggedIn && !isAdmin && <h1>You are not an Admin!</h1>}
     </div>
   );
 }
