@@ -8,7 +8,7 @@ const Subscriber = (props) => {
   const blockHandler = async (chatId) => {
     //add user to the block list and also delete it from the subscriber
     try {
-      await axios.post(`${env.BASE_URL}/block`, {
+      await axios.post(`${env.REACT_APP_BASE_URL}/block`, {
         chatId: chatId,
       });
       deleteHandler(chatId);
@@ -19,7 +19,7 @@ const Subscriber = (props) => {
   const deleteHandler = async (chatId) => {
     try {
       //delete the user with the help of delete apis
-      await axios.delete(`${env.BASE_URL}/subscriber/${chatId}`);
+      await axios.delete(`${env.REACT_APP_BASE_URL}/subscriber/${chatId}`);
       props.onDeleteBlock();
     } catch (error) {
       console.error("Error in Delete Handler", error);

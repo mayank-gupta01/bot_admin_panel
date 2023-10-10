@@ -41,6 +41,6 @@
     ]
   },
   "react-dotenv": {
-    "whitelist": ["GOOGLE_CLIENT_ID","BASE_URL"]
+    "whitelist": ["REACT_APP_GOOGLE_CLIENT_ID","REACT_APP_BASE_URL"]
   }
 }

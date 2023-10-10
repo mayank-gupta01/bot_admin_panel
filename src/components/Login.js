@@ -6,10 +6,10 @@ import axios from "axios";
 import "./Login.css"
 
 const Login = (props) => {
-  const clientId = env.GOOGLE_CLIENT_ID;
+  const clientId = env.REACT_APP_GOOGLE_CLIENT_ID;
   async function verifyAdmin(decodedData) {
     const email = decodedData.email;
-    const res = await axios.get(`${env.BASE_URL}/admin/${email}`);
+    const res = await axios.get(`${env.REACT_APP_BASE_URL}/admin/${email}`);
     console.log(res.data);
     if (res.data) {
       props.setAdmin();

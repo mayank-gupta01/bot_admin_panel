@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 function Logout(props) {
   const [subscriberData, setSubscriberData] = useState([]);
   async function fetchInfo() {
-    const subscribers = await axios.get(`${env.BASE_URL}/subscriber`);
+    const subscribers = await axios.get(`${env.REACT_APP_BASE_URL}/subscriber`);
     setSubscriberData(subscribers.data);
   }
   useEffect(() => {
